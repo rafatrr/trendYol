@@ -7,7 +7,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 import useCartStroe from "@/stores/cartStore";
 import { toast } from "react-toastify";
-const ProductCard = ({ product }: { product: ProductType }) => {
+
+
+const ProductCard = ({ product }: { product: ProductType  }) => {
   const [productTypes, setProductTypes] = useState({
     size:product.sizes[0],
     color:product.colors[0],

@@ -7,7 +7,10 @@ const useCartStroe = create<CartStoreStateType & cartStoreActionsType>()(
     (set) => ({
       cart: [],
       hasHydrated: false,
-      addToCart: (product) =>
+
+
+
+      addToCart: (product) => //{id, selectedcolor, selectedsize}
         set((state) => {
           const existingIndex = state.cart.findIndex(
             (p) =>
@@ -15,7 +18,6 @@ const useCartStroe = create<CartStoreStateType & cartStoreActionsType>()(
               p.selectedColor === product.selectedColor &&
               p.selectedSize === product.selectedSize
           );
-
           if (existingIndex !== -1) {
             const updatedCart = [...state.cart];
             updatedCart[existingIndex].quantity += product.quantity || 1;
@@ -26,13 +28,26 @@ const useCartStroe = create<CartStoreStateType & cartStoreActionsType>()(
               ...state.cart,
               {
                 ...product,
-                quantity: 1,
+                quantity: product.quantity | 1,
                 selectedColor: product.selectedColor,
-                selectedSize: product.selectedSize,
-              },
+                selectedSize: product.selectedSize,  },
             ],
           };
+
+
         }),
+
+
+
+
+
+
+
+
+
+
+
+
 
       removeFromCart: (product) =>
         set((state) => ({
